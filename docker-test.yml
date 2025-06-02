@@ -6,13 +6,16 @@ services:
     image: nginx:alpine
     ports:
       - 3000:80
-    environment:
-      - HELLO="Docker"
     volumes:
-#      - testnfs:/mnt/docker/test
-#      - type: bind
-      - /mnt/docker/test/index.html:/usr/share/nginx/html/index.html
+      - test-nfs:/usr/share/nginx/html/
     deploy:
-#      placement:
-#        constraints: [node.role == manager]
       replicas: 3
+
+volumes:
+  nginx:
+    driver: local
+  test-nfs:
+    driver_opts:
+      type: "nfs"
+      o: "addr=10.15.25.53,nolock,soft,rw"
+      device: ":/mnt/docker/nfs
