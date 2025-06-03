@@ -1,4 +1,5 @@
 #!/bin/bash
+for run in {1..13}; do
 UP=$(netstat -tulpn | grep :80 | grep dockerd | wc -l);
 if [ "$UP" -ne 1 ];
 then
@@ -7,3 +8,5 @@ then
 else
         echo "Webserver Is UP";
 fi
+sleep 5s
+done
