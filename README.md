@@ -59,5 +59,7 @@ docker stack deploy -c docker-test.yml test --detach=false
 
 
 3   Написать smoketest проверки работы сервиса nginx;
+
 4   Кластер должен быть отказоустойчивым, т.е. при отключении ВМ на которой запущен контейнер nginx, nginx должен быть доступен;
+
 5   залить исходники, playbook-и в git, оформить readme.md, предоставить ссылку на git.
