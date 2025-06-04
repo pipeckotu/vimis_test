@@ -74,7 +74,8 @@
 
     #!/bin/bash
     for run in {1..13}; do
-    UP=$(netstat -tulpn | grep :80 | grep dockerd | wc -l);
+    UP=$(curl -I http://10.15.25.55/ -s |grep HTTP |grep 200 |wc -l);
+
       if [ "$UP" -ne 1 ];
     then
       echo "Webserver Is DOWN";
