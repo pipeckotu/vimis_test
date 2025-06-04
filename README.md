@@ -32,14 +32,15 @@
 
 
 2. Описание сериса nginx,
+
 Создать файл index.html
 
-        <html lang="en">
-          <head><title>Hello Docker</title></head>
-          <body>
-            <p>Hello User! I'm test service docker_swarm.</p>
-          </body>
-        </html>
+    <html lang="en">
+      <head><title>Hello Docker</title></head>
+        <body>
+          <p>Hello User! I'm test service docker_swarm.</p>
+        </body>
+      </html>
 
 создать файл docker-test.yml
 
