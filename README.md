@@ -23,38 +23,38 @@
 2   Написать описание сериса nginx, развернуть в поднятом кластере;
 Создать файл index.html
 
-<html lang="en">
-  <head><title>Hello Docker</title></head>
-  <body>
-    <p>Hello User! I'm test service docker_swarm.</p>
-  </body>
-</html>
+  <html lang="en">
+    <head><title>Hello Docker</title></head>
+    <body>
+      <p>Hello User! I'm test service docker_swarm.</p>
+    </body>
+  </html>
 
 создать файл docker-test.yml
 
-version: "3"
+  version: "3"
 
-services:
+  services:
 
-  nginx:
-    image: nginx:alpine
-    ports:
-      - 3000:80
-    volumes:
-      - test-nfs:/usr/share/nginx/html/
-    deploy:
-      replicas: 3
-volumes:
-  nginx:
-    driver: local
-  test-nfs:
-    driver_opts:
-      type: "nfs"
-      o: "addr=10.15.25.53,nolock,soft,rw"
-      device: ":/mnt/docker/nfs"
+    nginx:
+      image: nginx:alpine
+      ports:
+        - 3000:80
+      volumes:
+        - test-nfs:/usr/share/nginx/html/
+      deploy:
+        replicas: 3
+  volumes:
+    nginx:
+      driver: local
+    test-nfs:
+      driver_opts:
+        type: "nfs"
+        o: "addr=10.15.25.53,nolock,soft,rw"
+        device: ":/mnt/docker/nfs"
 
 запустить стек командой  
-docker stack deploy -c docker-test.yml test --detach=false
+  docker stack deploy -c docker-test.yml test --detach=false
 
 
 
