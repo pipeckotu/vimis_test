@@ -32,24 +32,24 @@
 
 создать файл docker-test.yml
 
-  version: "3"
-  services:
-    nginx:
-      image: nginx:alpine
-      ports:
-        - 3000:80
-      volumes:
-        - test-nfs:/usr/share/nginx/html/
-      deploy:
-        replicas: 3
-  volumes:
-    nginx:
-      driver: local
-    test-nfs:
-      driver_opts:
-        type: "nfs"
-        o: "addr=10.15.25.53,nolock,soft,rw"
-        device: ":/mnt/docker/nfs"
+    version: "3"
+    services:
+      nginx:
+        image: nginx:alpine
+        ports:
+          - 3000:80
+        volumes:
+          - test-nfs:/usr/share/nginx/html/
+        deploy:
+          replicas: 3
+    volumes:
+      nginx:
+        driver: local
+      test-nfs:
+        driver_opts:
+          type: "nfs"
+          o: "addr=10.15.25.53,nolock,soft,rw"
+          device: ":/mnt/docker/nfs"
 
 запустить стек командой  
   docker stack deploy -c docker-test.yml test --detach=false
