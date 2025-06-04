@@ -70,12 +70,11 @@
 
 
 3   проверка работы сервиса
-использовать bash скрипт  nginx-chek.sh
+использовать bash скрипты  nginx-chek.sh
 
     #!/bin/bash
     for run in {1..13}; do
     UP=$(curl -I http://10.15.25.55/ -s |grep HTTP |grep 200 |wc -l);
-
       if [ "$UP" -ne 1 ];
     then
       echo "Webserver Is DOWN";
@@ -84,3 +83,16 @@
     fi
     sleep 5s
     done
+    
+и nginx-chek-all.sh
+
+    #!/bin/bash
+    for run in {1..13}; do
+    UP=$(docker ps |grep healthy |wc -l);
+      if [ "$UP" -ne 1 ];
+    then
+      echo "Nginx Service Is DOWN";
+    else
+      echo "Nginx Service Is UP";
+    fi
+
