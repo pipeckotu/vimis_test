@@ -8,19 +8,23 @@
 
 1    Поднять кластер docker swarm (количество ВМ на ваше усмотрение);
 создать новый swarm командой : 
-  docker swarm init --advertise-addr 10.15.25.53
-выполнить следующую команду чтобы получить команду join
-  docker swarm join-token worker
-полученую строку ввксти на нодах 1 и 2 
-  пример строки ( docker swarm join --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c 10.15.25.53:2377 )
-Выполнить 
-  docker info 
-для просмотра состояния swarm
-Выполнить 
-  docker node ls  
-для просмотра информации об узлах
+    docker swarm init --advertise-addr 10.15.25.53
 
-2   Написать описание сериса nginx, развернуть в поднятом кластере;
+выполнить следующую команду чтобы получить команду join
+    docker swarm join-token worker
+
+полученую строку ввксти на нодах 1 и 2 
+  пример строки ( 
+    docker swarm join --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c 10.15.25.53:2377 )
+
+Для просмотра состояния swarm выполнить команду
+  docker info 
+
+Для просмотра информации об узлах выполнить команду  
+    docker node ls  
+
+
+2   Описание сериса nginx, развернуть в поднятом кластере;
 Создать файл index.html
 
   <html lang="en">
