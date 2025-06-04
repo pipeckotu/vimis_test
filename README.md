@@ -33,9 +33,7 @@
 создать файл docker-test.yml
 
   version: "3"
-
   services:
-
     nginx:
       image: nginx:alpine
       ports:
