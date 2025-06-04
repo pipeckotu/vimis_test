@@ -58,8 +58,17 @@ docker stack deploy -c docker-test.yml test --detach=false
 
 
 
-3   Написать smoketest проверки работы сервиса nginx;
+3   проверка работы сервиса
+использовать bash скрипт  nginx-chek.sh
 
-4   Кластер должен быть отказоустойчивым, т.е. при отключении ВМ на которой запущен контейнер nginx, nginx должен быть доступен;
-
-5   залить исходники, playbook-и в git, оформить readme.md, предоставить ссылку на git.
+    #!/bin/bash
+    for run in {1..13}; do
+    UP=$(netstat -tulpn | grep :80 | grep dockerd | wc -l);
+      if [ "$UP" -ne 1 ];
+    then
+      echo "Webserver Is DOWN";
+    else
+      echo "Webserver Is UP";
+    fi
+    sleep 5s
+    done

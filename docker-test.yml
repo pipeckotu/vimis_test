@@ -19,3 +19,4 @@ volumes:
       type: "nfs"
       o: "addr=10.15.25.53,nolock,soft,rw"
       device: ":/mnt/docker/nfs
+      
